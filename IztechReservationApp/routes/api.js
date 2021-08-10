@@ -89,7 +89,6 @@ router.post('/getMenAppointments', (req, res, next) => {
 router.post('/getBeautyAppointments', (req, res, next) => {
     Test.find({ "artistId.0" : {$gt : 13}} )
     .then(data => {
-      console.log("yazıyommmmm", data);
       res.json(data);
     })
     .catch(next)
@@ -198,7 +197,6 @@ router.post("/postTest", async (req, res, next)  => {
   }
   if (req.body.action == "update" || (req.body.action == "batch" && req.body.changed.length > 0)) {
     eventData = req.body.changed;
-    console.log("updateyyimmmmm");
     for (var i = 0; i < eventData.length; i++) {
       delete eventData[i]._id;
       var sdate = new Date(eventData[i].StartTime);
@@ -217,7 +215,6 @@ router.post("/postTest", async (req, res, next)  => {
   }
 
   if (req.body.action == "remove" || (req.body.action == "batch" && req.body.deleted.length > 0)) {
-    console.log("removedayım");
     eventData = req.body.deleted;
     for (var i = 0; i < eventData.length; i++) {
       console.log("FORDAYIM --------------------------------", eventData[i].Id );
